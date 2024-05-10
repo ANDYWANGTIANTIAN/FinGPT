@@ -1,4 +1,4 @@
-export CUDA_VISIBLE_DEVICES=0,1,2,3
+export CUDA_VISIBLE_DEVICES=0
 export NCCL_IGNORE_DISABLED_P2P=1
 export TRANSFORMERS_NO_ADVISORY_WARNINGS=1
 export TOKENIZERS_PARALLELISM=0
@@ -121,6 +121,7 @@ export TOKENIZERS_PARALLELISM=0
 # --max_length 512 \
 # --batch_size 4 \
 # --learning_rate 1e-4 \
+# --from_remote True \
 # --num_epochs 4
 
 # deepspeed train_lora.py \
@@ -151,14 +152,16 @@ export TOKENIZERS_PARALLELISM=0
 # --num_epochs 4
 
 # deepspeed train_lora.py \
-# --run_name MT-llama2-linear \
+# --run_name MT-llama2-linear-1e-5 \
 # --base_model llama2 \
 # --dataset sentiment-train,headline,finred*3,ner*15 \
 # --max_length 512 \
 # --batch_size 4 \
-# --learning_rate 1e-4 \
-# --num_epochs 4 \
+# --learning_rate 1e-5 \
+# --num_epochs 2 \
+# --from_remote True \
 # --log_interval 10
+# >train.log 2>&1 &
 
 
 #---- FinEval ----
@@ -173,15 +176,16 @@ export TOKENIZERS_PARALLELISM=0
 # --num_epochs 50 \
 # --log_interval 10
 
-# deepspeed train_lora.py \
-# --run_name fineval-llama2-linear \
-# --base_model llama2 \
-# --dataset data/fingpt-fineval \
-# --max_length 512 \
-# --batch_size 4 \
-# --learning_rate 1e-4 \
-# --num_epochs 50 \
-# --log_interval 10
+ deepspeed train_lora.py \
+ --run_name fineval-llama2-linear \
+ --base_model llama2 \
+ --dataset fineval \
+ --max_length 512 \
+ --batch_size 4 \
+ --learning_rate 1e-4 \
+ --num_epochs 50 \
+  --from_remote True \
+ --log_interval 10
 
 # deepspeed train_lora.py \
 # --run_name fineval-chatglm2-linear \
@@ -371,10 +375,11 @@ export TOKENIZERS_PARALLELISM=0
 # deepspeed train_lora.py \
 # --run_name headline-llama2-linear \
 # --base_model llama2 \
-# --dataset data/fingpt-headline \
+# --dataset headline \
 # --max_length 512 \
 # --batch_size 4 \
 # --learning_rate 1e-4 \
+#--from_remote True \
 # --num_epochs 8
 
 # deepspeed train_lora.py \
@@ -495,10 +500,10 @@ export TOKENIZERS_PARALLELISM=0
 # --run_name finred-llama2-linear \
 # --base_model llama2 \
 # --dataset data/fingpt-finred-re \
-# --ds_config config_hf.json \
 # --max_length 512 \
 # --batch_size 4 \
 # --learning_rate 1e-4 \
+#   --from_remote True \
 # --num_epochs 8
 
 # deepspeed train_lora.py \

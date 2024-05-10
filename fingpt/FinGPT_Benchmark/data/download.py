@@ -20,6 +20,7 @@ DATASETS = [
     (('FinGPT/fingpt-ner-cls', None), 'fingpt-ner-cls'),
     (('FinGPT/fingpt-fineval', None), 'fingpt-fineval'),
     (('FinGPT/fingpt-sentiment-cls', None), 'fingpt-sentiment-cls'),
+    (('FinGPT/fingpt-sentiment-train', None), 'fingpt-sentiment-train'),
 ]
 
 def download(no_cache: bool = False):

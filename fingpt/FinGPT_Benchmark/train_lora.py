@@ -30,7 +30,7 @@ from utils import *
 
 
 # Replace with your own api_key and project name
-os.environ['WANDB_API_KEY'] = 'ecf1e5e4f47441d46822d38a3249d62e8fc94db4'
+os.environ['WANDB_API_KEY'] = 'cb50327980e4815d5cbeddcebc87df507fd47f61'
 os.environ['WANDB_PROJECT'] = 'fingpt-benchmark'
 
 
@@ -107,7 +107,8 @@ def main(args):
         lr_scheduler_type=args.scheduler,
         save_steps=args.eval_steps,
         eval_steps=args.eval_steps,
-        fp16=True,
+        bf16=True,
+        fp16=False,
         # fp16_full_eval=True,
         deepspeed=args.ds_config,
         evaluation_strategy=args.evaluation_strategy,
