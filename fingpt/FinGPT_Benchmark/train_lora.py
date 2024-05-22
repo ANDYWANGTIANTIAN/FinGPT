@@ -1,33 +1,26 @@
-import os
-import sys
 import argparse
 from datetime import datetime
 from functools import partial
-import datasets
+
 import torch
-from torch.utils.tensorboard import SummaryWriter
 import wandb
+# Importing LoRA specific modules
+from peft import (
+    TaskType,
+    LoraConfig,
+    get_peft_model
+)
+from torch.utils.tensorboard import SummaryWriter
 from transformers import (
     AutoTokenizer,
-    AutoModel,
     AutoModelForCausalLM,
     TrainingArguments,
     Trainer,
     DataCollatorForSeq2Seq
 )
-from transformers.trainer import TRAINING_ARGS_NAME
 from transformers.integrations import TensorBoardCallback
-# Importing LoRA specific modules
-from peft import (
-    TaskType,
-    LoraConfig,
-    get_peft_model,
-    get_peft_model_state_dict,
-    prepare_model_for_int8_training,
-    set_peft_model_state_dict
-)
-from utils import *
 
+from utils import *
 
 # Replace with your own api_key and project name
 os.environ['WANDB_API_KEY'] = 'cb50327980e4815d5cbeddcebc87df507fd47f61'

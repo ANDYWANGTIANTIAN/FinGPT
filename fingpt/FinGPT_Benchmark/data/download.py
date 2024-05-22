@@ -22,7 +22,6 @@ DATASETS = [
     (('FinGPT/fingpt-sentiment-cls', None), 'fingpt-sentiment-cls'),
     (('FinGPT/fingpt-sentiment-train', None), 'fingpt-sentiment-train'),
 ]
-
 def download(no_cache: bool = False):
     """Downloads all datasets to where the FinGPT library is located."""
     data_dir = Path(__file__).parent
@@ -38,5 +37,5 @@ if __name__ == "__main__":
     parser = argparse.ArgumentParser()
     parser.add_argument("--no_cache", default=False, required=False, type=str, help="Redownloads all datasets if set to True")
     
-    args = parser.parse_args()
-    download(no_cache=args.no_cache)
+    args = False
+    download(no_cache=args)
