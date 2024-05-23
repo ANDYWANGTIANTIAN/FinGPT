@@ -24,7 +24,7 @@ from utils import *
 
 # Replace with your own api_key and project name
 os.environ['WANDB_API_KEY'] = 'cb50327980e4815d5cbeddcebc87df507fd47f61'
-os.environ['WANDB_PROJECT'] = 'fingpt-benchmark'
+os.environ['WANDB_PROJECT'] = 'fingpt-capstone'
 
 
 def main(args):
