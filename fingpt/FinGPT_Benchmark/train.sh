@@ -22,21 +22,22 @@ export TOKENIZERS_PARALLELISM=0
 # --evaluation_strategy steps \
 # --ds_config config_hf.json
 
-# deepspeed train_lora.py \
-# --run_name GRCLS-sentiment-llama2-linear-small \
-# --base_model llama2 \
-# --test_dataset sentiment-cls-instruct \
-# --dataset headline-cls-instruct,finred-cls-instruct*2,ner-cls-instruct*7 \
-# --max_length 512 \
-# --batch_size 4 \
-# --learning_rate 1e-4 \
-# --num_epochs 1 \
-# --log_interval 10 \
-# --warmup_ratio 0 \
-# --scheduler linear \
-# --evaluation_strategy steps \
-# --eval_steps 100 \
-# --ds_config config_hf.json
+deepspeed train_lora.py \
+--run_name GRCLS-sentiment-llama2-linear-small \
+--base_model llama2 \
+--test_dataset sentiment-cls-instruct \
+--dataset headline-cls-instruct,finred-cls-instruct*2,ner-cls*2,sentiment-train,finred*3,finqa_bench_stealth-finance-v3,cfa_qa,qa_recent_news,news_research_report,flare-cfa \
+--max_length 1024 \
+--batch_size 4 \
+--learning_rate 1e-4 \
+--num_epochs 1 \
+--log_interval 10 \
+--warmup_ratio 0 \
+--scheduler linear \
+--evaluation_strategy steps \
+--eval_steps 100 \
+--ds_config config.json
+>train.log 2>&1 &
 
 # deepspeed train_lora.py \
 # --run_name GRCLS-sentiment-falcon-linear-small \
@@ -176,16 +177,16 @@ export TOKENIZERS_PARALLELISM=0
 # --num_epochs 50 \
 # --log_interval 10
 
- deepspeed train_lora.py \
- --run_name fineval-llama2-linear \
- --base_model llama2 \
- --dataset fineval \
- --max_length 512 \
- --batch_size 4 \
- --learning_rate 1e-4 \
- --num_epochs 50 \
-  --from_remote True \
- --log_interval 10
+#  deepspeed train_lora.py \
+#  --run_name fineval-llama2-linear \
+#  --base_model llama2 \
+#  --dataset fineval \
+#  --max_length 512 \
+#  --batch_size 4 \
+#  --learning_rate 1e-4 \
+#  --num_epochs 50 \
+#   --from_remote True \
+#  --log_interval 10
 
 # deepspeed train_lora.py \
 # --run_name fineval-chatglm2-linear \

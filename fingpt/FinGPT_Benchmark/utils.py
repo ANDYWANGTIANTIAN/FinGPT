@@ -74,6 +74,7 @@ def test_mapping(args, feature):
         "prompt": prompt,
     }
 
+
 def tokenize(args, tokenizer, feature):
     """
     Tokenizes the input prompt and target/output for model training or evaluation.
@@ -86,6 +87,11 @@ def tokenize(args, tokenizer, feature):
     Returns:
     dict: A dictionary containing tokenized 'input_ids', 'labels', and a flag 'exceed_max_length'.
     """
+
+    # Ensure all required fields are present and not None
+    if feature['instruction'] is None or feature['input'] is None or feature['output'] is None:
+        raise ValueError("One of the required fields in the feature dictionary is None.", feature)
+
     # Generate the prompt.
     prompt = get_prompt(
         args.instruct_template,
@@ -99,6 +105,12 @@ def tokenize(args, tokenizer, feature):
         max_length=args.max_length,
         truncation=True
     )['input_ids']
+
+    # # Check if the 'output' is None and handle the error
+    # if feature['output'] is None:
+    #     print(feature)
+    #     print(args)
+    #     raise ValueError(">>>The 'output' field in the feature dictionary is None.")
 
     # Tokenize the target/output.
     target_ids = tokenizer(
@@ -123,7 +135,7 @@ def tokenize(args, tokenizer, feature):
     # Create label IDs for training.
     # The labels should start from where the prompt ends, and be padded for the prompt portion.
     label_ids = [tokenizer.pad_token_id] * len(prompt_ids) + input_ids[len(prompt_ids):]
-    
+
     return {
         "input_ids": input_ids,
         "labels": label_ids,
@@ -208,7 +220,14 @@ def load_dataset(names, from_remote=False):
                 tmp_dataset = tmp_dataset['train']
                 tmp_dataset = tmp_dataset.train_test_split(test_size=0.2, shuffle=True, seed=42)
             else:
+                print(">>>>error reading ", dataset_path_or_name)
                 raise ValueError("The dataset must contain a 'train' or 'test' split.")
+
+        # Check if 'train' split contains 'output' column
+        # if 'train' in tmp_dataset and 'output' not in tmp_dataset['train'].column_names:
+        #     raise ValueError(f">>>The 'train' split of the dataset at {dataset_path_or_name} does not contain an 'output' column.")
+        # if 'test' in tmp_dataset and 'output' not in tmp_dataset['test'].column_names:
+        #     raise ValueError(f">>>The 'train' split of the dataset at {dataset_path_or_name} does not contain an 'output' column.")
 
         # Append the possibly replicated dataset to the list
         dataset_list.extend([tmp_dataset] * replication_factor)
