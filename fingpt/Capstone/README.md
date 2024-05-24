@@ -7,6 +7,7 @@
 - [x] RAG Simple version
 - [ ] RAG + Knowledge Graph
 - [ ] RAG + 跳步
+- [ ] RAG + evaluation/test
 - [ ] Multi-agent
 - [ ] Tool - Python running
 - [ ] Tool - Search
