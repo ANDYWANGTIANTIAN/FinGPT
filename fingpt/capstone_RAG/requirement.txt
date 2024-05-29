@@ -5,4 +5,6 @@ einops==0.6.1
 langchain==0.0.300 
 xformers==0.0.21 
 sentence_transformers==2.2.2 
-chromadb==0.4.12 peft
+chromadb==0.4.12 
+peft
+streamlit
