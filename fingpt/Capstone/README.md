@@ -14,5 +14,4 @@
 - [ ] Multi-agent
 - [ ] Tool - Python running
 - [ ] Tool - Search
-- [ ] Simple Frontend?
 - [ ] Final Presentation & Report
