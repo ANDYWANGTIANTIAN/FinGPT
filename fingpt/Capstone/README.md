@@ -12,6 +12,7 @@
 - [ ] RAG + self-rag
 - [ ] RAG + evaluation/test
 - [ ] Multi-agent
+- [ ] Report Generation
 - [ ] Tool - Python running
 - [ ] Tool - Search
 - [ ] Final Presentation & Report
