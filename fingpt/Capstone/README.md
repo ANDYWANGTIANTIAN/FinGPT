@@ -6,8 +6,8 @@
 - [x] June 1 Presentation & Report
 - [x] RAG Simple version
 - [x] frontend page
-- [] Merge Model --> gguf version
-- [] model api (create from llama.cpp python)
+- [ ] Merge Model --> gguf version
+- [ ] model api (create from llama.cpp python)
 - [ ] RAG + Knowledge Graph
 - [ ] RAG + self-rag
 - [ ] RAG + evaluation/test
