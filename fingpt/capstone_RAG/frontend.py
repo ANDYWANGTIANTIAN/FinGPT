@@ -16,7 +16,7 @@ if "messages" not in st.session_state:
 for msg in st.session_state.messages:
     st.chat_message(msg["role"]).write(msg["content"])
 
-rag=Rag()
+rag=Rag("/kaggle/working/chroma_db")
 if prompt := st.chat_input():
     # if not openai_api_key:
     #     st.info("Please add your OpenAI API key to continue.")

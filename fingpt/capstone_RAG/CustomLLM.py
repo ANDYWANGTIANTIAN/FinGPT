@@ -5,6 +5,7 @@ from transformers import AutoTokenizer,AutoModelForCausalLM
 import transformers
 from torch import cuda, bfloat16
 from peft import PeftModel
+import re
 
 #https://github.com/davidhandsome86/LLM_RAG/blob/main/Rag.py
 #https://blog.csdn.net/qq_39749966/article/details/136108973
@@ -75,6 +76,7 @@ class CustomLLM(LLM):
             eos_token_id=self.tokenizer.eos_token_id
         )
         output = self.tokenizer.decode(res[0], skip_special_tokens=True)
+        # output=re.findall(r"Answer:\s*(.*)", output)
 
        
         return output

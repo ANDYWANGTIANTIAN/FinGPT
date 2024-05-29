@@ -7,7 +7,7 @@ from langchain.vectorstores import Chroma
 from langchain.chains import LLMChain
 from CustomLLM import CustomLLM
 from langchain.embeddings import HuggingFaceEmbeddings
-
+import re
 
 
 
@@ -35,9 +35,12 @@ class Rag:
             prompt_template = """
             {instruction}
             Question: {question}
-            Answer:"""
+            """
             prompt = PromptTemplate(template=prompt_template, input_variables=["instruction", "question"])
 
             query_llm = LLMChain(llm=self.llm, prompt=prompt)
             response = query_llm.run({"instruction": instruction, "question": self.q})
+            print(type(response))
+            response=re.findall(r"Answer:\s*(.*)", response)
+
             return response
