@@ -1,12 +1,15 @@
 # HKU CS Capstone TO DO List
 
-- [ ] Data Extration 
-- [ ] Data Preparation 
-- [ ] Fine Tune 
-- [ ] June 1 Presentation & Report
+- [x] Data Extration 
+- [x] Data Preparation 
+- [x] Fine Tune 
+- [x] June 1 Presentation & Report
 - [x] RAG Simple version
+- [x] frontend page
+- [] Merge Model --> gguf version
+- [] model api (create from llama.cpp python)
 - [ ] RAG + Knowledge Graph
-- [ ] RAG + 跳步
+- [ ] RAG + self-rag
 - [ ] RAG + evaluation/test
 - [ ] Multi-agent
 - [ ] Tool - Python running
