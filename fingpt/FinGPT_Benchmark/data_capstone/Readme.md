@@ -3,7 +3,7 @@
 We will have three category data for our Llama fine-tuning 
 
 
-- Data from FinGPT 
+- Data from FinGPT (8个? )
 
 - Other source from hugging face
 
@@ -14,9 +14,13 @@ We will have three category data for our Llama fine-tuning
 
   - :books: [CFA textbook, ](https://page.sapp.edu.vn/hubfs/T%C3%A0i%20li%E1%BB%87u%20CFA%20Level%201/Secret%20Sauce%20CFA%20Level%201.pdf)  --- cover profolio management, equity investment, derivatives, financial statement, fixed income. 
   - Macro research paper (From Bloomberg) --- will finish on May 21:see_no_evil:
-    - 10 report
+    - 500 query
   - Equity research report (From Bloomberg) -- will finish on May 21 :see_no_evil:
-    - 10 companies
+    - 10 companies-> 300 query
+
+  - Blooberg daily morning news : total 500 news ---> convert to 4000 query
+
+
 
   
 
