@@ -24,7 +24,7 @@
             "warmup_num_steps": "auto"
         }
     },
-    "fp16": {
+    "bf16": {
         "enabled": true
     },
     "zero_optimization": {
